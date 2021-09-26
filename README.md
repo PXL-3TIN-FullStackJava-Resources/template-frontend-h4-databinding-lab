@@ -1,4 +1,4 @@
-# H3 Lab Data- & eventbinding
+# H4 Databinding 
 In deze lab voegen we dynamische functionaliteit toe aan onze components in de vorm van databinding & eventbinding. Databinding is in grote lijnen vergelijkbaar met die van VueJS. De change detection engine van Angular zorgt ervoor dat de data op de view up to date blijft. Er zijn verschillende stratigieën waarin je de Angular dection engine kan laten werken maar dit valt buiten de scope van deze lab. Gegeven is deze repo. Hierin staat een Angular project met reeds een confessions klasse. **Navigeer naar deze folder via de CLI** en voer volgend commando uit: ```npm install```
  
 Vervolgens voer je, nog steeds in deze folder, het commando ```ng serve -o``` uit. Hiermee zal de applicatie gestart worden en gaat er automatisch een browser open. Moest dit laatste niet het geval zijn, surf je naar http://localhost:4200. Bij elke aanpassing in de code zal de browser automatisch refreshen.
@@ -111,8 +111,8 @@ Eventbinding start met het aanmaken van methodes die opgeroepen bij een event. V
     this.confession.department = '';
   }
 
-  addNew(): void{
-    let newConfession = new Confession(this.confession.post, this.confession.department, this.
+   addNew(): void{
+    let newConfession: Confession = new Confession(this.confession.post, this.confession.department, this.confession.author);
     console.log(newConfession);
     alert("Added confession!");
     this.resetForm();
@@ -140,7 +140,7 @@ confessionList: Confession[] = [
 Vervolgens geven we in de klasse ```ConfessionItemComponent``` in ```confession-item.component.ts``` mee dat het Confession object een input parameter is. De ```ngOnInit``` methode maken we ook leeg:
 ```typescript
 export class ConfessionItemComponent implements OnInit {
-  @Input() confessionChild!: Confession;
+  @Input() confession!: Confession;
   constructor() { }
 
   ngOnInit(): void {
